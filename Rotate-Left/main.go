@@ -11,21 +11,15 @@ import (
 
 // Complete the rotLeft function below.
 func rotLeft(a []int32, d int32) []int32 {
-	for r := 0; r < int(d); r++ {
-		popped := a[0]
-		fmt.Println("popped:", popped)
-		for x := 0; x < len(a); x++ {
-			if x+1 >= len(a) {
-				a[len(a)-1] = popped
-			} else {
-				a[x] = a[x+1]
-			}
-		}
-		fmt.Println("new array:", a)
+	size := len(a)
+	arr := make([]int32, size)
+	for i := 0; i < size; i++ {
+		loc := (i + int(d)) % size
+		arr[i] = a[loc]
 
 	}
 
-	return a
+	return arr
 }
 
 func main() {
